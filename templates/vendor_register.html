@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block content %}
+<div class="auth-page-wrapper">
+  <div class="auth-card vendor-reg-card">
+    <div class="auth-header-icon">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 14C6 11.7909 7.79086 10 10 10H38C40.2091 10 42 11.7909 42 14V18H6V14Z" fill="#2563EB"/>
+        <path d="M10 18V38C10 39.1046 10.8954 40 12 40H36C37.1046 40 38 39.1046 38 38V18" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+        <rect x="18" y="24" width="12" height="16" rx="2" fill="#2563EB"/>
+      </svg>
+    </div>
+    <h2 class="auth-title">Join as Vendor</h2>
+    <p class="auth-subtitle">Start selling your products to local customers</p>
+
+    <form method="POST" class="auth-form" id="vendorRegisterForm">
+      <!-- 1. Personal Information -->
+      <div class="form-section-header">
+        <span class="section-icon">👤</span>
+        <span class="section-title-text">Personal Information</span>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <div class="input-with-icon">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <div class="input-with-icon">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+            </svg>
+          </span>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" title="10-digit phone number">
+        </div>
+        <span class="field-hint">10-digit phone number without country code</span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-with-icon">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+          </span>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        </div>
+      </div>
+
+      <!-- 2. Business Information -->
+      <div class="form-section-header">
+        <span class="section-icon">🏢</span>
+        <span class="section-title-text">Business Information</span>
+      </div>
+
+      <div class="form-group">
+        <label for="business_name">Business Name</label>
+        <div class="input-with-icon">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <input type="text" id="business_name" name="business_name" placeholder="Enter your business name" required>
+        </div>
+      </div>
+
+      <!-- 3. Business Location -->
+      <div class="form-section-header">
+        <span class="section-icon">📍</span>
+        <span class="section-title-text">Business Location</span>
+      </div>
+
+      <div class="form-group">
+        <label for="landmark">Landmark</label>
+        <input type="text" id="landmark" name="landmark" placeholder="Near landmark (e.g., Near City Mall)">
+      </div>
+
+      <div class="form-group">
+        <label for="address1">Address Line 1</label>
+        <input type="text" id="address1" name="address1" placeholder="Street address, building name">
+      </div>
+
+      <div class="form-group">
+        <label for="address2">Address Line 2 (Optional)</label>
+        <input type="text" id="address2" name="address2" placeholder="Apartment, suite, floor (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="pincode">Pincode</label>
+        <input type="text" id="pincode" name="pincode" placeholder="6-digit pincode" pattern="[0-9]{6}">
+      </div>
+
+      <!-- 4. Account Security -->
+      <div class="form-section-header">
+        <span class="section-icon">🔒</span>
+        <span class="section-title-text">Account Security</span>
+      </div>
+
+      <div class="form-group">
+        <label for="vendor_password">Password</label>
+        <div class="input-with-icon password-input-wrap">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          <input type="password" id="vendor_password" name="password" minlength="6" placeholder="Create a strong password" required>
+          <button type="button" class="eye-toggle" onclick="togglePassVisibility('vendor_password', this)" title="Show/hide password">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <span class="field-hint">Minimum 6 characters</span>
+      </div>
+
+      <div class="form-group">
+        <label for="vendor_confirm">Confirm Password</label>
+        <div class="input-with-icon">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          <input type="password" id="vendor_confirm" name="confirm_password" placeholder="Confirm your password" required>
+        </div>
+      </div>
+
+      <div class="terms-row">
+        <label class="checkbox-label">
+          <input type="checkbox" required>
+          <span>I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a></span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-auth-primary">
+        + Create Vendor Account
+      </button>
+    </form>
+
+    <div class="auth-divider">
+      <span>Already have an account?</span>
+    </div>
+
+    <a href="{{ url_for('unified_login') }}" class="btn-auth-secondary">
+      <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"/>
+      </svg>
+      Sign In Instead
+    </a>
+
+    <p class="auth-switch-link">
+      Looking to buy products? <a href="{{ url_for('customer_register') }}">Join as Customer</a>
+    </p>
+
+    <div class="card-footer-clean">
+      <a href="{{ url_for('index') }}">← Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function togglePassVisibility(id, btn) {
+  const input = document.getElementById(id);
+  if (input.type === "password") {
+    input.type = "text";
+    btn.style.opacity = "1";
+  } else {
+    input.type = "password";
+    btn.style.opacity = "0.6";
+  }
+}
+</script>
+{% endblock %}
+
+

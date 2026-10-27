@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero-section">
+  <h1 class="hero-title">
+    Connect Local Street Vendors with <br>Customers
+  </h1>
+  <p class="hero-subtitle">
+    Empowering local street vendors with digital visibility in their neighborhoods
+  </p>
+
+  <h2 class="section-title">Choose Your Role</h2>
+
+  <div class="role-cards-container">
+    <!-- Vendor Card -->
+    <div class="role-card">
+      <div class="card-icon-wrapper">
+        <svg class="role-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 14C6 11.7909 7.79086 10 10 10H38C40.2091 10 42 11.7909 42 14V18H6V14Z" fill="#2563EB"/>
+          <path d="M10 18V38C10 39.1046 10.8954 40 12 40H36C37.1046 40 38 39.1046 38 38V18" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+          <rect x="18" y="24" width="12" height="16" rx="2" fill="#2563EB"/>
+        </svg>
+      </div>
+      <h3 class="role-card-title">I'm a Vendor</h3>
+      <p class="role-card-desc">Sell products and reach customers in your area</p>
+      <a href="{{ url_for('vendor_page') }}" class="btn-role">Get Started</a>
+    </div>
+
+    <!-- Customer Card -->
+    <div class="role-card">
+      <div class="card-icon-wrapper">
+        <svg class="role-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 16H37C38.6569 16 40 17.3431 40 19L37.5 40C37.5 41.1046 36.6046 42 35.5 42H12.5C11.3954 42 10.5 41.1046 10.5 40L8 19C8 17.3431 9.34315 16 11 16Z" fill="#2563EB"/>
+          <path d="M17 18V12C17 8.13401 20.134 5 24 5C27.866 5 31 8.13401 31 12V18" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+          <path d="M20 22C20 24.2091 21.7909 26 24 26C26.2091 26 28 24.2091 28 22" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="role-card-title">I'm a Customer</h3>
+      <p class="role-card-desc">Find local vendors and products near you</p>
+      <a href="{{ url_for('customer_page') }}" class="btn-role">Get Started</a>
+    </div>
+  </div>
+
+  <!-- About Section matching Screenshot 1 -->
+  <section class="about-section" id="about">
+    <h2 class="about-title">About Smart Vendor Cloud</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5" fill="#2563EB"/>
+          </svg>
+        </div>
+        <h3 class="feature-heading">Location-Based Discovery</h3>
+        <p class="feature-text">Find vendors and customers in your neighborhood</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="3" ry="3"/>
+            <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/>
+          </svg>
+        </div>
+        <h3 class="feature-heading">Easy to Use</h3>
+        <p class="feature-text">Simple interface designed for everyone</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#2563EB" fill-opacity="0.15"/>
+          </svg>
+        </div>
+        <h3 class="feature-heading">Secure & Reliable</h3>
+        <p class="feature-text">Your data is safe with Azure cloud security</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+

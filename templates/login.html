@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block content %}
+<div class="auth-page-wrapper">
+  <div class="auth-card">
+    <div class="auth-header-icon">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 10H34C36.2091 10 38 11.7909 38 14V34C38 36.2091 36.2091 38 34 38H18" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+        <path d="M10 24H28M28 24L20 16M28 24L20 32" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="auth-title">Welcome Back!</h2>
+    <p class="auth-subtitle">Sign in to your account</p>
+
+    <form method="POST" class="auth-form">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-with-icon">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+          </span>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-with-icon password-input-wrap">
+          <span class="input-icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <button type="button" class="eye-toggle" onclick="togglePassVisibility('password', this)" title="Show/hide password">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="auth-options-row">
+        <label class="checkbox-label">
+          <input type="checkbox" name="remember">
+          <span>Remember me</span>
+        </label>
+        <a href="#forgot" class="forgot-link">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn-auth-primary">
+        <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        Sign In
+      </button>
+    </form>
+
+    <div class="auth-divider">
+      <span>Don't have an account?</span>
+    </div>
+
+    <p class="auth-prompt">Create a new account as:</p>
+    <div class="auth-role-buttons">
+      <a href="{{ url_for('customer_register') }}" class="btn-role-choice">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+        </svg>
+        Customer
+      </a>
+      <a href="{{ url_for('vendor_register') }}" class="btn-role-choice">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
+          <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />
+        </svg>
+        Vendor
+      </a>
+    </div>
+
+    <div class="card-footer-clean">
+      <a href="{{ url_for('index') }}">← Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function togglePassVisibility(id, btn) {
+  const input = document.getElementById(id);
+  if (input.type === "password") {
+    input.type = "text";
+    btn.style.opacity = "1";
+  } else {
+    input.type = "password";
+    btn.style.opacity = "0.6";
+  }
+}
+</script>
+{% endblock %}

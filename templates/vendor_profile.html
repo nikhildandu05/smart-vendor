@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card-container">
+  <div class="content-card">
+    <h2>Vendor Profile</h2>
+    <div class="profile-info">
+      <p><span class="label">Name</span> <span class="value">{{ vendor.name }}</span></p>
+      <p><span class="label">Email</span> <span class="value">{{ vendor.email }}</span></p>
+      <p><span class="label">Business Name</span> <span class="value">{{ vendor.business_name }}</span></p>
+      <p><span class="label">Member Since</span> <span class="value">{{ vendor.created_at.strftime("%d %b %Y") }}</span></p>
+    </div>
+    <div class="card-footer">
+      <a class="btn-logout" href="{{ url_for('vendor_logout') }}">Log Out</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

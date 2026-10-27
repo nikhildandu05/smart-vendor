@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Vendor Cloud</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  {% block header %}
+  <header class="navbar">
+    <div class="navbar-container">
+      <a href="{{ url_for('index') }}" class="brand-logo">
+        <span class="brand-icon-box">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8.5C3 7.67157 3.67157 7 4.5 7H19.5C20.3284 7 21 7.67157 21 8.5V11C21 11.5523 20.5523 12 20 12C19.4477 12 19 11.5523 19 11V11C19 11.5523 18.5523 12 18 12C17.4477 12 17 11.5523 17 11V11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11V11C15 11.5523 14.5523 12 14 12C13.4477 12 13 11.5523 13 11V11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11V11C11 11.5523 10.5523 12 10 12C9.44772 12 9 11.5523 9 11V11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11V11C7 11.5523 6.55228 12 6 12C5.44772 12 5 11.5523 5 11V11C5 11.5523 4.55228 12 4 12C3.44772 12 3 11.5523 3 11V8.5Z" fill="#F59E0B"/>
+            <path d="M4 12V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V12" stroke="#FFFFFF" stroke-width="2"/>
+            <path d="M9 21V15H15V21" fill="#FFFFFF"/>
+          </svg>
+        </span>
+        <span class="brand-text">Smart Vendor Cloud</span>
+      </a>
+      <nav class="nav-links">
+        <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+        <a href="{{ url_for('index') }}#about" class="nav-link">About</a>
+        <a href="{{ url_for('index') }}#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+  {% endblock %}
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-container">
+        {% for cat, msg in messages %}
+          <div class="msg {{cat}}">{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main class="page-container">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block footer %}
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+      <p class="copyright">© 2024 Smart Vendor Cloud. Empowering local businesses with technology.</p>
+      <div class="footer-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#support">Support</a>
+      </div>
+    </div>
+  </footer>
+  {% endblock %}
+</body>
+</html>

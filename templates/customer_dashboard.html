@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="customer-dash-layout">
+  <!-- Left Sidebar (Matching Screenshot 6) -->
+  <aside class="cust-sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon-box">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 8.5C3 7.67157 3.67157 7 4.5 7H19.5C20.3284 7 21 7.67157 21 8.5V11C21 11.5523 20.5523 12 20 12C19.4477 12 19 11.5523 19 11V11C19 11.5523 18.5523 12 18 12C17.4477 12 17 11.5523 17 11V11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11V11C15 11.5523 14.5523 12 14 12C13.4477 12 13 11.5523 13 11V11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11V11C11 11.5523 10.5523 12 10 12C9.44772 12 9 11.5523 9 11V11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11V11C7 11.5523 6.55228 12 6 12C5.44772 12 5 11.5523 5 11V11C5 11.5523 4.55228 12 4 12C3.44772 12 3 11.5523 3 11V8.5Z" fill="#F59E0B"/>
+          <path d="M4 12V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V12" stroke="#2563EB" stroke-width="2"/>
+          <path d="M9 21V15H15V21" fill="#2563EB"/>
+        </svg>
+      </span>
+      <span class="sidebar-brand-text">Smart Shopping</span>
+    </div>
+
+    <nav class="sidebar-menu">
+      <a href="{{ url_for('customer_dashboard') }}" class="menu-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+        </svg>
+        <span>Discover</span>
+      </a>
+
+      <a href="#nearby" class="menu-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        <span>Nearby Vendors</span>
+      </a>
+
+      <a href="#products" class="menu-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        <span>Products</span>
+      </a>
+
+      <a href="#favorites" class="menu-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+        <span>Favorites</span>
+      </a>
+
+      <a href="{{ url_for('customer_profile') }}" class="menu-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="{{ url_for('customer_logout') }}" class="btn-sidebar-logout">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/>
+        </svg>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Area -->
+  <div class="cust-main-content">
+    <!-- Top Header Bar -->
+    <header class="cust-topbar">
+      <h1 class="cust-page-title">Discover Local Vendors</h1>
+
+      <div class="cust-search-wrap">
+        <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+        </svg>
+        <input type="text" placeholder="Search vendors, products..." class="cust-search-input">
+      </div>
+
+      <div class="cust-user-badge">
+        <div class="cust-avatar">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div class="cust-user-info">
+          <span class="cust-user-name">{{ customer.name }}</span>
+          <span class="cust-user-role">Customer</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Body -->
+    <div class="cust-body-scroll">
+      <!-- Gradient Hero Banner -->
+      <div class="cust-hero-banner">
+        <h2 class="banner-heading">Welcome to Smart Vendor Cloud!</h2>
+        <p class="banner-subtext">Discover amazing products from local vendors in your neighborhood</p>
+      </div>
+
+      <!-- Quick Action Pills -->
+      <div class="quick-actions-row">
+        <a href="#nearby" class="pill-btn">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+          Find Nearby Vendors
+        </a>
+        <a href="#products" class="pill-btn">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+          Browse Products
+        </a>
+        <a href="#favorites" class="pill-btn">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+          </svg>
+          View Favorites
+        </a>
+      </div>
+
+      <!-- Featured Vendors Near You Section -->
+      <section class="dash-section" id="nearby">
+        <h3 class="dash-section-title">Featured Vendors Near You</h3>
+
+        <div class="featured-vendors-box">
+          {% if vendors and vendors|length > 0 %}
+            <div class="vendors-cards-row">
+              {% for v in vendors %}
+              <div class="vendor-mini-card">
+                <div class="vendor-mini-avatar">🏪</div>
+                <div class="vendor-mini-info">
+                  <h4>{{ v.business_name or v.name }}</h4>
+                  <p class="vendor-mini-owner">Owner: {{ v.name }}</p>
+                  <p class="vendor-mini-loc">📍 {{ v.landmark or v.address1 or 'Local Neighborhood' }}</p>
+                  {% if v.maps_link %}
+                  <a href="{{ v.maps_link }}" target="_blank" class="btn-vendor-map">View on Maps ↗</a>
+                  {% endif %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="discovering-vendors-placeholder">
+              <div class="stall-placeholder-icon">
+                <svg viewBox="0 0 24 24" fill="#94A3B8">
+                  <path d="M4 4h16l-2 5H6L4 4z"/>
+                  <path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9H5zm4 7a2 2 0 110-4 2 2 0 010 4z"/>
+                </svg>
+              </div>
+              <h4 class="placeholder-title">Discovering vendors...</h4>
+              <p class="placeholder-desc">We're finding great local vendors for you!</p>
+            </div>
+          {% endif %}
+        </div>
+      </section>
+
+      <!-- Recently Added Products Section -->
+      <section class="dash-section" id="products">
+        <h3 class="dash-section-title">Recently Added Products</h3>
+
+        <div class="vendor-products-grid">
+          {% for product in products %}
+          <div class="vendor-product-card">
+            <div class="product-img-box">
+              {% if product.image_filename %}
+                <img src="{{ url_for('static', filename='uploads/' + product.image_filename) }}" alt="{{ product.name }}" class="product-img">
+              {% else %}
+                <div class="img-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+            <div class="product-body">
+              <h3 class="product-title">{{ product.name }}</h3>
+              <p class="product-desc">{{ product.description or 'Fresh local quality product.' }}</p>
+              <div class="product-price">₹{{ product.price|int if product.price == product.price|int else product.price }}</div>
+              <span class="status-badge-active">ACTIVE</span>
+            </div>
+          </div>
+          {% else %}
+          <div class="empty-products-notice">
+            <p>No products available right now. Check back soon!</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}
